@@ -5,8 +5,6 @@ function Layout({ children }) {
   return (
     <div className="App">
       <header className="App-header">
-        <NavButton to="/" name="Home" />
-        <NavButton to="/about" name="About" />
         <NavButton to="/universities" name="Universities" />
         <NavButton to="/trends" name="Trends" />
       </header>
