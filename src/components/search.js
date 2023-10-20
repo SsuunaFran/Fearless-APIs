@@ -1,30 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function SearchBar() {
-    const [selectRegion, setselectRegion] = useState('');
-
-    const handleRegionChange = (e) => {
-        setselectRegion(e.target.value)
+function SearchBar(props) {
+    const onregionChange = (e) => {
+        props.regionChange(e.target.value)
     }
 
-    const search = () => {
-        console.log(selectRegion)
-    }
     return (
         <div className="container">
             <div className="row justify-content-center mt-5">
                 <div className="col-md-6">
-                    <div className="input-group mb-3">
-                        <select className="form-select me-4" aria-label="Search" onChange={handleRegionChange} value={selectRegion}>
+                    <div className="input-group mb-3 row">
+                        <span className='col-12 mb-2'>Choose a trend by region from the dropdown</span>
+                        <select className="form-select me-4" aria-label="Search" onChange={onregionChange} value={props.selectRegion}>
                             <option selected hidden>Search By Region</option>
                             <option value="UG">Uganda</option>
                             <option value="GB">United Kingdom</option>
                             <option value="BE">Belgium</option>
                         </select>
-                        <button className="btn btn-primary" type="submit" onClick={search}>
-                            Search
-                        </button>
                     </div>
                 </div>
             </div>

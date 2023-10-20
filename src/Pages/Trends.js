@@ -3,11 +3,20 @@ import ReactWordcloud from "react-wordcloud";
 import SearchBar from "../components/search";
 
 function Trends() {
+
   const [trends, setTrends] = useState([]);
+
+  const [selectRegion, setselectRegion] = useState('');
+
+    const handleRegionChange = (newregion) => {
+        setselectRegion(newregion);
+    }
+
   useEffect(() => {
+    const regionCode=`${selectRegion}`
     async function getTrends() {
       const response = await fetch(
-        "https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&regionCode=UG&key=AIzaSyCMKJqq4Hyfbh4rR5peZ8VGFiOf25ZynxY"
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&regionCode=${regionCode}&key=AIzaSyCMKJqq4Hyfbh4rR5peZ8VGFiOf25ZynxY`
       );
       const data = await response.json();
       const wordCloudData = data.items.map((video,index) => {
@@ -20,8 +29,10 @@ function Trends() {
       });
       setTrends(wordCloudData);
     }
-    getTrends();
-  }, []);
+    if(selectRegion){
+      getTrends();
+    }
+  }, [selectRegion]);
 
   const options = {
     rotations: 0,
@@ -43,7 +54,7 @@ function Trends() {
   return (
     <>
       <h1>Trends</h1>
-      <SearchBar></SearchBar>
+      <SearchBar selectRegion={selectRegion} regionChange={handleRegionChange}></SearchBar>
       <ReactWordcloud words={trends} options={options} callbacks={callbacks} />
     </>
   );
