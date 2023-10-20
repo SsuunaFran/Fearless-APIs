@@ -53,7 +53,7 @@ function Trends() {
   
   return (
     <>
-      <h1>Trends</h1>
+      {selectRegion ? <h1>TRENDS IN {selectRegion}</h1>:<h2>No region selected yet!</h2>}
       <SearchBar selectRegion={selectRegion} regionChange={handleRegionChange}></SearchBar>
       <ReactWordcloud words={trends} options={options} callbacks={callbacks} />
     </>
