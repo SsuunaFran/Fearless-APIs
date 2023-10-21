@@ -23,7 +23,7 @@ function Trends() {
         return {
           text: video.snippet.title,
           url: `https://www.youtube.com/watch?v=${video.id}`,
-          value: video.statistics.viewCount,
+          value: 600-4-index,
           index:index
         };
       });
