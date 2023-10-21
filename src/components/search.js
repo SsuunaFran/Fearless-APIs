@@ -17,6 +17,8 @@ function SearchBar(props) {
                             <option value="UG">Uganda</option>
                             <option value="GB">United Kingdom</option>
                             <option value="BE">Belgium</option>
+                            <option value="FR">France</option>
+                            <option value="KE">Israel</option>
                         </select>
                     </div>
                 </div>
