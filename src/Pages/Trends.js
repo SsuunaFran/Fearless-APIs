@@ -25,6 +25,7 @@ function Trends() {
           url: `https://www.youtube.com/watch?v=${video.id}`,
           value: 600-4-index,
           index:index
+          
         };
       });
       setTrends(wordCloudData);
